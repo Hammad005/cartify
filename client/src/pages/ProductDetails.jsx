@@ -69,7 +69,7 @@ const ProductDetails = () => {
   }
   const handleBuyNow = async () => {
     if (!user) {
-      return toast.error("Please login to add to cart");
+      return toast.error("Please login to buy now");
     }
     if (!data.productColor) {
       return toast.error("Please select a color");

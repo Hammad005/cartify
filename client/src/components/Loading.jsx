@@ -4,7 +4,7 @@ import logoCircle from "../assets/logoCircle.png";
 const Loading = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center h-screen">
         <div className="flex items-center gap-2">
           <div className="relative flex items-center justify-center">
             <img

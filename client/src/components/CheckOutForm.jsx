@@ -25,9 +25,8 @@ const CheckOutForm = () => {
   const { createOrder, orderloading } = orderStore();
 
   const handleCompeleteOrder = () => {
-    if (!address) {
-      toast.error("Please add an address first");
-      return;
+    if (address.length === 0) {
+      return toast.error("Please add an address first");
     }
     const ids = cart?.items?.map((item) => item.productId._id);
     const colors = cart?.items?.map((item) => item.productColor);

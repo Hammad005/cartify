@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import logoCircle from "../assets/logoCircle.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -49,19 +49,22 @@ const Navbar = () => {
   };
 
   const { user, logout, loading } = authStore();
-  const [openSearch, setOpenSearch] = useState(false)
+  const [openSearch, setOpenSearch] = useState(false);
+  const [openSheet, setOpenSheet] = useState(false);
+
+  useEffect(() => {
+    setOpenSheet(false);
+  }, [navigateTo])
   
   return (
     <>
-                <SearchMenu openSearch={openSearch} setOpenSearch={setOpenSearch}/>
+      <SearchMenu openSearch={openSearch} setOpenSearch={setOpenSearch} />
       <nav
         className={`flex items-center justify-between w-full lg:px-[5rem] px-6 py-3 bg-background border-b`}
       >
         <div className="lg:hidden">
-          <Sheet>
-            <SheetTrigger>
-              <Menu />
-            </SheetTrigger>
+          <Menu onClick={() => setOpenSheet(true)} />
+          <Sheet open={openSheet} onOpenChange={setOpenSheet}>
             <SheetContent side="bottom" className={"rounded-t-2xl"}>
               <SheetHeader>
                 <SheetTitle>
@@ -215,9 +218,11 @@ const Navbar = () => {
                 <TooltipTrigger onClick={() => redirectTo("/cart")}>
                   <div className="relative group">
                     <ShoppingBag className="group-hover:scale-115 transition-transform duration-300 ease-in-out text-gray-300 hover:text-primary cursor-pointer" />
-                    {cart?.items?.length > 0 && <div className="absolute top-[-10px] right-[-10px] bg-primary text-white text-[10px] font-semibold rounded-full px-[8px] py-[2px] transition-transform duration-300 ease-in-out group-hover:scale-115">
-                      {cart?.items?.length}
-                    </div>}
+                    {cart?.items?.length > 0 && (
+                      <div className="absolute top-[-10px] right-[-10px] bg-primary text-white text-[10px] font-semibold rounded-full px-[8px] py-[2px] transition-transform duration-300 ease-in-out group-hover:scale-115">
+                        {cart?.items?.length}
+                      </div>
+                    )}
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>

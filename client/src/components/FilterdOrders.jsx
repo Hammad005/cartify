@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import ViewOrder from "./viewOrder";
+import ViewOrder from "./ViewOrder";
 
 
 const FilterdOrders = ({ filterdOrders }) => {

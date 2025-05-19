@@ -116,7 +116,10 @@ const Navbar = () => {
                 )}
                 {user && (
                   <Button
-                    onClick={logout}
+                    onClick={() => {
+                      logout();
+                      setOpenSheet(false);
+                    }}
                     variant={"outline"}
                     disabled={loading}
                   >

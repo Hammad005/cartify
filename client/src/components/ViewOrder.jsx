@@ -47,7 +47,7 @@ const ViewOrder = ({ view, setView, order }) => {
                     icon={ChevronDownIcon}
                     label="Order Summary"
                     value={
-                      "Rs. " + (order?.totalAmount + 100).toFixed(2) + "/-"
+                      "Rs. " + order?.totalAmount.toFixed(2) + "/-"
                     }
                     className="flex items-center justify-between border  font-bold text-primary text-sm bg-input/50 w-full px-2"
                   />
@@ -117,7 +117,7 @@ const ViewOrder = ({ view, setView, order }) => {
                       <div className="flex items-center justify-between pt-5 text-base">
                         <p className="text-primary font-bold">Total</p>
                         <p className="font-bold">
-                          Rs. {(order?.totalAmount + 100).toFixed(2)}/-
+                          Rs. {order?.totalAmount.toFixed(2)}/-
                         </p>
                       </div>
                     </div>
